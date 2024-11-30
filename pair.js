@@ -122,7 +122,7 @@ router.get('/', async (req, res) => {
                         console.log('Connection closed with bot. Please run again.');
                         console.log(reason);
                         await delay(5000);
-                        exec('pm2 restart mxgamecoder');
+                        exec('pm2 restart qasim');
                     }
                 }
             });
