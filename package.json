@@ -5,7 +5,7 @@
   "description": "A multi-functional WhatsApp bot Web QR Scanner.",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name qasim",
+    "start": "pm2 start index.js --deep-monitoring --attach --name mxgamecoder",
     "stop": "pm2 stop qasim",
     "restart": "pm2 restart qasim",
     "dev": "nodemon index.js"
