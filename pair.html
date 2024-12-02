@@ -7,14 +7,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #1e1e2f, #3a3a4f);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #1e1e2f, #3a3a4f);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      overflow: hidden; /* Prevents scrollbars */
+    }
+
+    /* Snowfall effect */
+    @keyframes snow {
+      0% { transform: translateY(0) translateX(0); opacity: 1; }
+      100% { transform: translateY(100vh) translateX(10vw); opacity: 0; }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      left: calc(100% * var(--x));
+      font-size: var(--size);
+      color: white;
+      animation: snow var(--duration) linear infinite;
     }
 
     .container {
@@ -24,90 +40,90 @@
     }
 
     .box {
-    width: 340px;
-    padding: 25px;
-    background: #2a2a3d;
-    border-radius: 15px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
-    text-align: center;
-    position: relative;
+      width: 340px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+      text-align: center;
+      position: relative;
     }
 
     #text {
-      color: #000; /* Set the text color to black (#000) */
+      color: #000;
     }
 
     .input-container input {
-      color: #000; /* Set the text color to black (#000) */
+      color: #000;
     }
 
     .centered-text {
-      color: #000; /* Set the text color to black (#000) */
+      color: #000;
     }
 
     .input-container {
-    display: flex;
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 10px;
+      display: flex;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
     }
 
     .input-container input {
-    flex: 1;
-    padding: 0.8rem;
-    font-size: 1rem;
-    background: #1e1e2f;
-    color: #fff;
-    border: 2px solid #4a90e2;
-    border-right: none;
-    transition: all 0.3s ease;
+      flex: 1;
+      padding: 0.8rem;
+      font-size: 1rem;
+      background: #1e1e2f;
+      color: #fff;
+      border: 2px solid #4a90e2;
+      border-right: none;
+      transition: all 0.3s ease;
     }
-    
+
     .input-container input:focus {
-    border-color: #6ac1ff;
-    outline: none;
-    box-shadow: 0 0 10px #6ac1ff;
+      border-color: #6ac1ff;
+      outline: none;
+      box-shadow: 0 0 10px #6ac1ff;
     }
-    
+
     .input-container button {
-    padding: 0.8rem;
-    background: #4a90e2;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+      padding: 0.8rem;
+      background: #4a90e2;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    
+
     .input-container button:hover {
-    background: #6ac1ff;
-    box-shadow: 0 0 15px #6ac1ff;
+      background: #6ac1ff;
+      box-shadow: 0 0 15px #6ac1ff;
     }
-    
+
     .box h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: bold;
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
-    
+
     .box h6 {
-    margin: 10px 0 20px 0;
-    font-size: 0.95rem;
-    color: #cfcfcf;
+      margin: 10px 0 20px 0;
+      font-size: 0.95rem;
+      color: #cfcfcf;
     }
-    
+
     #waiting-message {
-    font-size: 0.9rem;
-    margin-top: 10px;
-    color: #ff6161;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #ff6161;
     }
-    
+
     main#pair {
-    margin-top: 15px;
-    font-size: 1rem;
+      margin-top: 15px;
+      font-size: 1rem;
     }
 
     @media (max-width: 500px) {
@@ -123,33 +139,27 @@
         padding: 1rem;
         border-radius: 0.8rem;
       }
-    }
 
-    .centered-text {
-      text-align: center;
-    }
-
-    @media (max-width: 500px) {
       .box {
-        width: 90%; 
-      }
-    }
-
-    @media (max-width: 500px) {
-      .input-container input {
-        border-radius: 0.8rem;
-        width: 80%; 
-      }
-
-      .input-container button {
-        padding: 1rem;
-        border-radius: 0.9rem;
-        width: 100%; 
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Snowflakes -->
+  <div id="snowflakes">
+    <span class="snowflake" style="--x: 0.1; --size: 1rem; --duration: 8s;">❄</span>
+    <span class="snowflake" style="--x: 0.2; --size: 1.2rem; --duration: 10s;">❄</span>
+    <span class="snowflake" style="--x: 0.3; --size: 0.8rem; --duration: 6s;">❄</span>
+    <span class="snowflake" style="--x: 0.4; --size: 1.5rem; --duration: 12s;">❄</span>
+    <span class="snowflake" style="--x: 0.5; --size: 1rem; --duration: 7s;">❄</span>
+    <span class="snowflake" style="--x: 0.6; --size: 1.3rem; --duration: 9s;">❄</span>
+    <span class="snowflake" style="--x: 0.7; --size: 1rem; --duration: 8s;">❄</span>
+    <span class="snowflake" style="--x: 0.8; --size: 1.1rem; --duration: 10s;">❄</span>
+    <span class="snowflake" style="--x: 0.9; --size: 0.9rem; --duration: 6s;">❄</span>
+  </div>
+
   <div class="container">
     <div class="main">
       <div class="box" id="box">
@@ -160,11 +170,11 @@
             <br>
             <h6>Enter your number with a country code.</h6>
             <div class="input-container">
-              <input placeholder="923444844060" type="number" id="number" placeholder="Enter your phone number with a country code" name="">
+              <input placeholder="923444844060" type="number" id="number" name="">
               <br>
               <button id="submit">Submit</button>
             </div>
-            
+
             <a id="waiting-message" class="centered-text" style="display: none;">Please wait for some time</a>
             <br>
             <br>
@@ -174,7 +184,6 @@
       </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
     let a = document.getElementById("pair");
     let b = document.getElementById("submit");

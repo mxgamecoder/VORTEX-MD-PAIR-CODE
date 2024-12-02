@@ -5,23 +5,21 @@ let router = express.Router();
 const pino = require("pino");
 const { Boom } = require("@hapi/boom");
 const MESSAGE = process.env.MESSAGE || `
-*SESSION GENERATED SUCCESSFULY* ☠️
+🎄 *SESSION GENERATED, NOW GET LOST!* 🎅💀  
 
-*Gɪᴠᴇ ᴀ ꜱᴛᴀʀ ᴛᴏ ʀᴇᴘᴏ ꜰᴏʀ ᴄᴏᴜʀᴀɢᴇ* ☠️
-https://github.com/mxgamecoder/VORTEX-MD
+🎄 *GIVE A ⭐ TO THE REPO OR GET OUT!* 🎅💀  
+https://github.com/mxgamecoder/VORTEX-MD  
 
-*Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ ꜰᴏʀ ϙᴜᴇʀʏ* ☠️
-https://t.me/mxgamecoder
+🎄 *DON’T WHINE, JOIN THE SUPPORT GROUP IF YOU’RE CLUELESS!* 🎅💀  
+https://t.me/mxgamecoder  
 
+🎄 *FOLLOW THE DAMN VORTEX-BOT CHANNEL OR SANTA WON’T COME!* 🎅💀  
+https://whatsapp.com/channel/0029Vavz0e6E50Ugp30Z6z0W  
 
-*Follow the VORTEX-BOT channel on WhatsApp* ☠️
-https://whatsapp.com/channel/0029Vavz0e6E50Ugp30Z6z0W
+🎄 *CAN’T FIGURE IT OUT? WATCH THE TUTORIALS, FOOL!* 🎅💀  
+https://youtube.com/mxgamecoder  
 
-
-*Yᴏᴜ-ᴛᴜʙᴇ ᴛᴜᴛᴏʀɪᴀʟꜱ* ☠️
-https://youtube.com/mxgamecoder
-
-*VORTEX-MD--WHATSAPP-BOT* ☠️
+🎄 *VORTEX-MD--WHATSAPP-BOT, THE ONE YOU NEEDED BUT DON’T DESERVE!* 🎅💀  
 `;
 
 const { upload } = require('./mega');

@@ -4,35 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Add snowfall effect */
+    @keyframes snowfall {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      100% {
+        transform: translateY(100vh) translateX(10px);
+      }
+    }
+
     body {
       display: flex;
-      flex-direction: column; /* Stack items vertically */
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background-color: black; /* Set the background color to black */
+      background-color: #0d1b2a; /* Midnight blue background */
+      background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png'); /* Subtle pattern */
+      overflow: hidden;
+      color: #ffffff;
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
+    }
+
+    /* Snowflakes */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      background: #ffffff;
+      opacity: 0.8;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: snowfall 5s linear infinite;
+    }
+
+    /* Vary sizes and animations of snowflakes */
+    .snowflake:nth-child(odd) {
+      width: 5px;
+      height: 5px;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+
+    .snowflake:nth-child(even) {
+      width: 8px;
+      height: 8px;
+      animation-duration: 4s;
+      animation-delay: 2s;
     }
 
     .btn {
-      --color: #00A97F;
-      --color2: rgb(10, 25, 30);
-      width: 200px; /* Set a fixed width for the buttons */
-      padding: 0.8em 1.75em;
+      --color: #ff4b5c; /* Christmas red */
+      --color2: #ffffff; /* White for hover text */
+      width: 220px;
+      padding: 1em 2em;
       background-color: transparent;
-      border-radius: 6px;
-      border: .3px solid var(--color);
-      transition: .5s;
+      border-radius: 8px;
+      border: 2px solid var(--color);
+      transition: 0.5s;
       position: relative;
       overflow: hidden;
       cursor: pointer;
       z-index: 1;
-      font-weight: 300;
-      font-size: 17px;
-      font-family: 'Roboto', 'Segoe UI', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
       text-transform: uppercase;
       color: var(--color);
-      margin-bottom: 10px; /* Add margin to separate buttons */
+      margin-bottom: 15px;
     }
 
     .btn::after, .btn::before {
@@ -45,7 +84,7 @@
       inset: 50%;
       left: 25%;
       z-index: -1;
-      transition: .5s ease-out;
+      transition: 0.5s ease-out;
       background-color: var(--color);
     }
 
@@ -68,17 +107,24 @@
     }
 
     .btn:active {
-      filter: brightness(.7);
-      transform: scale(.98);
+      filter: brightness(0.8);
+      transform: scale(0.98);
     }
   </style>
 </head>
 <body>
-
-  <button onclick="window.open(`/qr`)" class="btn">qr code</button>
-  <button onclick="window.open(`/pair`)" class="btn">pair code</button>
-  <button onclick="window.open(`https://github.com/mxgamecoder`)" class="btn">github</button>
-  <button onclick="window.open(`https://whatsapp.com/channel/0029Vavz0e6E50Ugp30Z6z0W`)" class="btn">whatsapp</button>
-
+  <!-- Snowflakes -->
+  <div class="snowflake" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="snowflake" style="left: 40%; animation-delay: 2s;"></div>
+  <div class="snowflake" style="left: 60%; animation-delay: 4s;"></div>
+  <div class="snowflake" style="left: 80%; animation-delay: 1s;"></div>
+  <div class="snowflake" style="left: 10%; animation-delay: 3s;"></div>
+  <div class="snowflake" style="left: 90%; animation-delay: 2s;"></div>
+  
+  <!-- Buttons -->
+  <button onclick="window.open(`/qr`)" class="btn">QR Code</button>
+  <button onclick="window.open(`/pair`)" class="btn">Pair Code</button>
+  <button onclick="window.open(`https://github.com/mxgamecoder`)" class="btn">GitHub</button>
+  <button onclick="window.open(`https://whatsapp.com/channel/0029Vavz0e6E50Ugp30Z6z0W`)" class="btn">WhatsApp</button>
 </body>
 </html>
